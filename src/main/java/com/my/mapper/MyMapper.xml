@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.mapper.MyMapper">
+	<select id="selectInfo" resultType="com.my.domain.MyDto">
+		SELECT  MM003.MBR_NM
+      , MM003.MBR_USER_ID
+      , MM003.MBR_PHONE
+      , MM003.BZPP_ORDER_NO
+      , PM001.PDT_NO
+      , PM001.PDT_NM
+      , BM001.BZPP_NM
+      , BM001.BZPP_PHONE
+      , BM001.BZPP_ADDR
+      , PM001.DEL_YN
+FROM 
+       TBAXMM003 MM003 -- 회원정보
+      ,TBAXPM001 PM001 -- 제품정보
+      ,TBAXBM001 BM001 -- 사업자정보
+WHERE 1=1
+AND MM003.BZPP_ORDER_NO = PM001.BZPP_ORDER_NO
+AND MM003.BZPP_ORDER_NO = BM001.BZPP_ORDER_NO;
+	</select>
+</mapper>
