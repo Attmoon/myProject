@@ -70,7 +70,7 @@ thead.appendChild(row_1);
 // Creating and adding data to second row of the table
 let row_2 = document.createElement('tr');
 let row_2_data_1 = document.createElement('td');
-row_2_data_1.innerHTML = [[${list.MBR_NM}]];
+row_2_data_1.innerHTML = "${list.MBR_NM}";
 let row_2_data_2 = document.createElement('td');
 row_2_data_2.innerHTML = "James Clerk";
 let row_2_data_3 = document.createElement('td');

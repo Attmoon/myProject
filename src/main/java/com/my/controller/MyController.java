@@ -19,6 +19,7 @@ public class MyController {
 	public void list(Model model) {
 		List<MyDto> list = service.selectInfo();
 		model.addAttribute("list", list);
-		
+		System.out.println("@@@@@@@@@@");
+		System.out.println(list);
 	}
 }

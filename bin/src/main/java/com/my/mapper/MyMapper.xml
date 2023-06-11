@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.my.mapper.MyMapper">
-	<select id="myInfo" resultType="com.my.domain.MyDto">
+	<select id="selectInfo" resultType="com.my.domain.MyDto">
 		SELECT  MM003.MBR_NM
       , MM003.MBR_USER_ID
       , MM003.MBR_PHONE
