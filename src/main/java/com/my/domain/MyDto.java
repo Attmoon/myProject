@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.ToString;
 
 @Data
-@ToString
 public class MyDto {
 	private String MBR_NM;
 	private String MBR_USER_ID;
