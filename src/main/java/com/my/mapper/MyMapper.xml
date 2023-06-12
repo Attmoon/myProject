@@ -19,6 +19,16 @@ FROM
       ,TBAXPM001 PM001 -- 제품정보
       ,TBAXBM001 BM001 -- 사업자정보
 WHERE 1=1
+<if test="mbrName != null and mbrName != ''">
+	AND MM003.MBR_NM like #{mbrName}
+</if>
+<if test="order != null and order != ''">
+	AND MM003.BZPP_ORDER_NO like #{order}
+</if>
+<if test="prName != null and prName != ''">
+	AND PM001.PDT_NM like #{prName}
+</if>
+
 AND MM003.BZPP_ORDER_NO = PM001.BZPP_ORDER_NO
 AND MM003.BZPP_ORDER_NO = BM001.BZPP_ORDER_NO
 	</select>

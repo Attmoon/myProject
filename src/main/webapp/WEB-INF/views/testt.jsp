@@ -17,16 +17,22 @@
 	<div class="container">
 		<div class="row">
 			<div class="col">
+				<form>
 				<div>
-					<span>회원명 : <input type="text" /></span> 
-					<span>주문번호 : <input type="text" /></span>
+					<span>회원명 : <input type="text" name="mbrName" /></span> 
+					<span>주문번호 : <input type="text" name="order" /></span>
 				</div>
 				<div>
-					<span>제품명 : <input type="text" /></span>
-					<span>삭제유무 : <input type="text" /></span>
-					<button>조회</button>
+					<span>제품명 : <input type="text" name="prName" /></span>
+					<span>삭제유무 : 
+						<select name="delyn" id="delyn">
+				          <option value="Y">Y</option>
+				          <option value="N">N</option>
+				        </select>
+			        </span>
+					<input type="submit" value="조회" />
 				</div>
-				
+				</form>
 				<!-- table.table>thead>tr>th*3^^tbody -->
 				<table class="table">
 					<thead>
