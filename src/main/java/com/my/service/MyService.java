@@ -13,7 +13,7 @@ public class MyService {
 	@Autowired
 	private MyMapper mapper;
 	
-	public List<MyDto> selectInfo(String mbrName, String order, String prName) {
-		return mapper.myInfo(mbrName, order, prName);
+	public List<MyDto> selectInfo(String mbrName, String order, String prName, String delyn) {
+		return mapper.myInfo(mbrName, order, prName, delyn);
 	}
 }

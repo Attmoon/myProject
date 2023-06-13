@@ -28,6 +28,9 @@ WHERE 1=1
 <if test="prName != null and prName != ''">
 	AND PM001.PDT_NM like #{prName}
 </if>
+<if test="delyn != null and delyn != ''">
+	AND PM001.DEL_YN like #{delyn}
+</if>
 
 AND MM003.BZPP_ORDER_NO = PM001.BZPP_ORDER_NO
 AND MM003.BZPP_ORDER_NO = BM001.BZPP_ORDER_NO
