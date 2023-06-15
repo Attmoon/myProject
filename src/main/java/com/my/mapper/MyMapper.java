@@ -9,5 +9,5 @@ import com.my.domain.MyDto;
 
 @Mapper
 public interface MyMapper {
-	List<MyDto> myInfo(@Param("mbrName") String mbrName, @Param("order") String order, @Param("prName") String prName, @Param("delyn") String delyn);
+	List<MyDto> myInfo(@Param("mbrName") String mbrName, @Param("orderNo") String order, @Param("prName") String prName, @Param("delyn") String delyn);
 }

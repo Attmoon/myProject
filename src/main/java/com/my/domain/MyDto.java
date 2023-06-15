@@ -5,14 +5,14 @@ import lombok.ToString;
 
 @Data
 public class MyDto {
-	private String MBR_NM;
-	private String MBR_USER_ID;
-	private String MBR_PHONE;
-	private String BZPP_ORDER_NO;
-	private String PDT_NO;
-	private String PDT_NM;
-	private String BZPP_NM;
-	private String BZPP_PHONE;
-	private String BZPP_ADDR;
-	private String DEL_YN;
+	private String mbrnm;
+	private String userid;
+	private String mbrphone;
+	private String orderno;
+	private String pdtno;
+	private String pdtnm;
+	private String bznm;
+	private String bznum;
+	private String bzadd;
+	private String delyn;
 }

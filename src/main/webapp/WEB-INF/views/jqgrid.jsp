@@ -13,71 +13,56 @@
 <script type="text/javascript" src="//cdn.jsdelivr.net/jqgrid/4.6.0/jquery.jqGrid.src.js" /></script>
 
 <script>
-// $(document).ready(function() {
-// 	$("#list").jqGrid({
-// 		datatype: "json",
-// 		url: "/jqgrid2",
-// 		caption:"list",
-// 		mtype : "POST",
-// 		jsonReader: {
-// 			repeatitems:false
-// 		},
-// 		colNames:['회원명', '회원아이디', '회원폰번호','주문번호','제품번호','제품명','사업자명','사업자폰','사업자주소','삭제유무'],
-// 		colModel:[
-// 			{name:'MBR_NM', index:'MBR_NM', width:90, align: "center"},
-// 			{name:'MBR_USER_ID', index:'MBR_USER_ID', width:100 , align: "center" },
-// 			{name:'MBR_PHONE', index:'MBR_PHONE', width:150, align: "center" },
-// 			{name:'BZPP_ORDER_NO', index:'BZPP_ORDER_NO', width:80, align: "center"},
-// 			{name:'PDT_NO', index:'PDT_NO', width:80, align: "center"},
-// 			{name:'PDT_NM', index:'PDT_NM', width:80, align: "center"},
-// 			{name:'BZPP_NM', index:'BZPP_NM', width:80, align: "center"},
-// 			{name:'BZPP_PHONE', index:'BZPP_PHONE', width:80, align: "center"},
-// 			{name:'BZPP_ADDR', index:'BZPP_ADDR', width:80, align: "center"},
-// 			{name:'DEL_YN', index:'DEL_YN', width:80, align: "center"}
-// 		],
-// 		autowidth: true,
-// 		rownumbers : true,
-// 		multiselect:true,
-// 		pager:'#pager',
-// 		rowNum: 10,
-// 		rowList: [10, 20, 50],
-// 		height: 250,
-// 		viewrecords:true
-// 	});
-
-
-// });
 $(document).ready(function(){
     $("#list").jqGrid({          
-        url:"/jqgrid", //ajax 요청주소
+        url:"/jqgrid2", //ajax 요청주소
         datatype:"json", //결과물 받을 데이터 타입
-        mtype : "GET",
-        jsonReader : {
-        	root : 'list',
-        	repeatitems : false
-        },
+        postData:{"mbrName":$("#mbrName").val(),"orderNo":$("#orderNo").val(),"prName":$("#prName").val(),"delyn":$("#delyn").val()},
+        mtype : "post",
         rowNum:10,
-        colNames:['회원명', '회원아이디', '회원폰번호','주문번호','제품번호','제품명','사업자명','사업자폰','사업자주소','삭제유무'],
+        colNames:["회원명", "회원아이디", "회원폰번호","주문번호","제품번호","제품명","사업자명","사업자폰","사업자주소","삭제유무"],
         colModel:[
- 			{name:'MBR_NM', index:'MBR_NM', width:90, align: "center", edittype:"text"},
- 			{name:'MBR_USER_ID', index:'MBR_USER_ID', width:100 , align: "center", edittype:"text"},
- 			{name:'MBR_PHONE', index:'MBR_PHONE', width:150, align: "center", edittype:"text"},
- 			{name:'BZPP_ORDER_NO', index:'BZPP_ORDER_NO', width:80, align: "center", edittype:"text"},
- 			{name:'PDT_NO', index:'PDT_NO', width:80, align: "center", edittype:"text"},
- 			{name:'PDT_NM', index:'PDT_NM', width:80, align: "center", edittype:"text"},
- 			{name:'BZPP_NM', index:'BZPP_NM', width:80, align: "center", edittype:"text"},
- 			{name:'BZPP_PHONE', index:'BZPP_PHONE', width:80, align: "center", edittype:"text"},
- 			{name:'BZPP_ADDR', index:'BZPP_ADDR', width:80, align: "center", edittype:"text"},
- 			{name:'DEL_YN', index:'DEL_YN', width:80, align: "center", edittype:"text"}
+ 			{name:"mbrnm", index:"mbrnm", width:90, align: "center", editable:true, edittype:"text"},
+ 			{name:"userid", index:"userid", width:100 , align: "center", editable:true, edittype:"text"},
+ 			{name:"mbrphone", index:"mbrphone", width:150, align: "center", editable:true, edittype:"text"},
+ 			{name:"orderno", index:"orderno", width:80, align: "center", editable:true, edittype:"text"},
+ 			{name:"pdtno", index:"pdtno", width:80, align: "center", editable:true, edittype:"text"},
+ 			{name:"pdtnm", index:"pdtnm", width:80, align: "center", editable:true, edittype:"text"},
+ 			{name:"bznm", index:"bznm", width:80, align: "center", editable:true, edittype:"text"},
+ 			{name:"bznum", index:"bznum", width:80, align: "center", editable:true, edittype:"text"},
+ 			{name:"bzadd", index:"bzadd", width:80, align: "center", editable:true, edittype:"text"},
+ 			{name:"delyn", index:"delyn", width:80, align: "center", editable:true, edittype:"text"}
  		],
         viewrecords:true 
     });
-    console.log($("#list").jqGrid('getCol', 'MBR_NM', true));
+	$('#search').on("click", function(){
+		   $("#list").clearGridData();
+		   $("#list").setGridParam({
+			   postData:{"mbrName":$("#mbrName").val(),"orderNo":$("#orderNo").val(),"prName":$("#prName").val(),"delyn":$("#delyn").val()}
+		   }).trigger("reloadGrid")
+	});
 });
 </script>
 </head>
 
 <body>
+	<form method="post">
+		<div>
+			<span>회원명 : <input type="text" name="mbrName" id="mbrName" pattern="^[가-힣a-zA-Z]+$"/></span> 
+			<span>주문번호 : <input type="text" name="orderNo" id="orderNo" pattern="^[가-힣a-zA-Z]+$" /></span>
+		</div>
+		<div>
+			<span>제품명 : <input type="text" name="prName" id="prName" /></span>
+			<span>삭제유무 : 
+				<select name="delyn" id="delyn">
+		          <option value="">-선택-</option>
+		          <option value="Y">Y</option>
+		          <option value="N">N</option>
+		        </select>
+	        </span>
+		</div>
+	</form>
+	<button id="search">조회</button>
 	<table id="list"></table>
 </body>
 
